@@ -4,16 +4,17 @@
 #include "Point2D.h"
 #include <vector>
 
-using namespace std;
-
 class maze {
-private:
-	int x, y;
-	vector<int> v;
+protected:
+	int row, col; // column, row
+	std::vector<std::vector<char>> grid; 
 public:
-	maze(int x, int y, vector<int> v);
-	
+	maze(int row, int col);
+	~maze();
 
+	virtual void display();
+	virtual void generateWall();
+	virtual void generateExit();
 };
 
 #endif

@@ -141,11 +141,13 @@
   <ItemGroup>
     <ClInclude Include="maze.h" />
     <ClInclude Include="Point2D.h" />
+    <ClInclude Include="randomMaze.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="maze.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="randomMaze.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
