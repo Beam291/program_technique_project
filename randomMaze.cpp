@@ -32,32 +32,104 @@ void randomMaze::display() {
 }
 
 void randomMaze::generateWall() {
-	int xw = 0; //vertical
-	int yw = 0; //horizontal
-
+	//checking if the input legit or not
 	if (wallLength < 0) {
-		std::cout << "Cannot generate wall since wall length less than 0" << std::endl;;
+		std::cout << "Cannot generate wall since wall length less than 0" << std::endl;
+		return;
+	}
+	else if (wallLength > grid.size() || wallLength > grid[0].size()) {
+		std::cout << "Your wall length is too long for the maze" << std::endl;
+		return;
 	}
 
-	if (wallLength > grid.size()) {
-		std::cout << "Your wall length is bigger than the maze" << std::endl;
-		if (wallLength > grid[0].size()) {
-			return;
-		}
-		else {
-			yw = wallNumber;
-		}
-	}
-	if (wallLength > grid[0].size()) {
-		std::cout << "Your wall length is bigger than the maze" << std::endl;
-		xw = wallNumber;
-	}
+	//two type of wall, vertical wall and horizontal wall
+	int vw = 0;
+	int hw = 0;
 
 	srand(time(NULL));
-	if (xw == 0 && yw == 0)
-		for (int i = 0; i < wallNumber; ++i) (rand() % 2) != 0 ? xw += 1 : yw += 1;
+	if (vw == 0 && hw == 0)
+		for (int i = 0; i < wallNumber; ++i) {
+			if ((rand() % 2) != 0) { //odd number will generate vertical wall
+				vw += 1;
+				
+			}
+			else {	//even number will generate horizontal wall
+				hw += 1;
+			}
+		} 
 
+	//random position of X and Y
+	bool valid = true;
 
+	//Generate Wall
+	if (vw != 0) {
+		for (int wall = 0; wall < vw; wall++) {
+			int flag = 0; //checkpoint, check if this position is clear or not so wall can generate from there
+			int x = rand() % (grid.size() - 1);
+			int y = rand() % (grid[0].size() - 1);
+			if ((x + wallLength) > grid.size()) {
+				continue;
+			}
+			else {
+				for (int i = 0; i < wallLength; i++) {
+					if (flag == 0) {
+						for (int j =0; j < wallLength; j++) {
+							grid[x + j][y] = true;
+						}
+					}
+					if (grid[x + i][y] == true) { //check if that position has wall or not
+						flag = 1;
+						break;
+					}
+				}
+			}
+		}
+	}
 
+	if (hw != 0) {
+		for (int wall = 0; wall < hw; wall++) {
+			int flag = 0; //checkpoint
+			int x = rand() % (grid.size() - 1);
+			int y = rand() % (grid[0].size() - 1);
+			if ((y + wallLength) > grid[0].size()) {
+				continue;
+			}
+			else {
+				for (int i = 0; i < wallLength; i++) {
+					if (flag == 0) {
+						for (int j = 0; j < wallLength; j++) {
+							grid[x][y+j] = true;
+						}
+					}
+					if (grid[x][y + i] == true) { //check if that position has wall or not
+						flag = 1;
+						break;
+					}
+				}
+			}
+		}
+	}
+	
+}
 
+void randomMaze::generateExit()
+{
+	srand(time(NULL));
+	for (int i = 0; i < row; ++i)
+	{
+		for (int j = 0; j < col; ++j)
+		{
+			int x = rand() % (row - 1);
+			int y = rand() % (col - 1);
+			if (grid[x][y] != 1)
+			{
+				grid[x][y] = 'x';
+				std::cout << "exit at (" << x << "," << y << ")" << std::endl;
+				break;
+			}
+
+		}
+		break;
+	}
+	display();
 }

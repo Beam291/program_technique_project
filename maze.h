@@ -15,6 +15,8 @@ public:
 	virtual void display();
 	virtual void generateWall();
 	virtual void generateExit();
+
+	friend class robot;
 };
 
 #endif

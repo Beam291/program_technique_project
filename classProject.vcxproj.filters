@@ -24,6 +24,9 @@
     <ClInclude Include="randomMaze.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="robot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="maze.cpp">
@@ -36,6 +39,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="randomMaze.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="robot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
