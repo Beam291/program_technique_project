@@ -14,8 +14,8 @@ protected:
 
 public:
 	robot();
-	robot(Point2D initPos);
-	robot(Point2D initPos, std::vector<Point2D> covered);
+	robot(Point2D (initPos));
+	robot(Point2D (initPos), std::vector<Point2D> covered);
 	~robot();
 
 	//Getter
@@ -33,7 +33,7 @@ public:
 	std::vector<std::vector<char> > read_recieve;
 
 	void readMaze(maze* rm) {
-		recieve = rm->grid; //recieved information about maze 
+		recieve = rm->grid; //recieved information from maze 
 		read_recieve = recieve;
 	}
 };

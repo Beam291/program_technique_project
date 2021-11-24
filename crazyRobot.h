@@ -1,5 +1,5 @@
-#ifndef CRAZYROBOT_
-#define CRAZYROBOT_
+#ifndef crazyRobot_
+#define crazyRobot_
 
 #include "Point2D.h"
 #include "robot.h"
@@ -7,13 +7,13 @@
 
 class RandomMaze;
 
-class CrazyRobot : public robot
+class crazyRobot : public robot
 {
 public:
-    CrazyRobot();
-    CrazyRobot(Point2D initPos);
-    CrazyRobot(Point2D initPos, std::vector<Point2D> C);
-    ~CrazyRobot();
+    crazyRobot();
+    crazyRobot(Point2D initPos);
+    crazyRobot(Point2D initPos, std::vector<Point2D> covered);
+    ~crazyRobot();
 
     Point2D getInitPos() const;
     std::vector<Point2D> getCovered() const;

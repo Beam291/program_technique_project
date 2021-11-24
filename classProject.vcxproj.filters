@@ -27,6 +27,9 @@
     <ClInclude Include="robot.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="crazyRobot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="maze.cpp">
@@ -42,6 +45,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="robot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="crazyRobot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

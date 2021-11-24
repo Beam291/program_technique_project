@@ -139,12 +139,14 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="crazyRobot.h" />
     <ClInclude Include="maze.h" />
     <ClInclude Include="Point2D.h" />
     <ClInclude Include="randomMaze.h" />
     <ClInclude Include="robot.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="crazyRobot.cpp" />
     <ClCompile Include="maze.cpp" />
     <ClCompile Include="Point2D.cpp" />
     <ClCompile Include="main.cpp" />

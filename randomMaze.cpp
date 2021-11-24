@@ -2,7 +2,7 @@
 #include <iostream>
 
 randomMaze::randomMaze(int row, int col, int wallLength, int wallNumber)
-	: maze(row, col) {
+	: maze(row, col, rblst) {
 	this->row = row;
 	this->col = col;
 	this->wallLength = wallLength;
@@ -61,7 +61,7 @@ void randomMaze::generateWall() {
 	//random position of X and Y
 	bool valid = true;
 
-	//Generate Wall
+	//Generate Wall, wall maybe cross each other
 	if (vw != 0) {
 		for (int wall = 0; wall < vw; wall++) {
 			int flag = 0; //checkpoint, check if this position is clear or not so wall can generate from there
@@ -77,7 +77,7 @@ void randomMaze::generateWall() {
 							grid[x + j][y] = true;
 						}
 					}
-					if (grid[x + i][y] == true) { //check if that position has wall or not
+					if (grid[x + i][y] == true) { //check if that start position has wall or not
 						flag = 1;
 						break;
 					}
@@ -88,7 +88,7 @@ void randomMaze::generateWall() {
 
 	if (hw != 0) {
 		for (int wall = 0; wall < hw; wall++) {
-			int flag = 0; //checkpoint
+			int flag = 0; //checkpoint, check if this position is clear or not so wall can generate from there
 			int x = rand() % (grid.size() - 1);
 			int y = rand() % (grid[0].size() - 1);
 			if ((y + wallLength) > grid[0].size()) {
@@ -101,7 +101,7 @@ void randomMaze::generateWall() {
 							grid[x][y+j] = true;
 						}
 					}
-					if (grid[x][y + i] == true) { //check if that position has wall or not
+					if (grid[x][y + i] == true) { //check if that start position has wall or not
 						flag = 1;
 						break;
 					}

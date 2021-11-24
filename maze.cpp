@@ -2,11 +2,12 @@
 #include <vector>
 #include <iostream>
 
-maze::maze(int row, int col) {
+maze::maze(int row, int col, std::vector<robot*> rblst) {
 	this->row = row;
 	this->col = col;
 	std::vector<std::vector<char>> grid(row, std::vector<char>(col, '.'));
 	this->grid = grid;
+    this->rblst = rblst;
 }
 
 maze::~maze() {}
