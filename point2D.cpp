@@ -1,4 +1,4 @@
-#include "point2D.h"
+#include "point2D.hpp"
 #include <iostream>
 
 Point2D::Point2D()

@@ -1,36 +1,32 @@
 #ifndef MAZE_
 #define MAZE_
 
-#include "Point2D.h"
 #include <vector>
-
-class robot;
+#include <iostream>
 
 class maze {
-protected:
-	int row, col; // column, row
-	std::vector<std::vector<char>> grid; 
-	std::vector<robot*> rblst; // Robot list
+private:
+	int row, col; // row and column
+	std::vector<std::vector<int>> mazeContainer; //use vector of vector to contain maze info
 
 public:
-	maze(int row, int col, std::vector<robot*> rblst);
+	//contructor
+	maze();
+	maze(int row, int col);
+
+	//destructor
 	~maze();
 
-	std::vector<robot*> getRblst() const
-	{
-		return this->rblst;
-	}
+	//getters
+	int getRow() const;
+	int getCol() const;
 
-	void setRblst(std::vector<robot*> rl)
-	{
-		this->rblst = rl;
-	}
+	//setter
+	void setRow(int row);
+	void setCol(int col);
 
+	void mazeStructure();
 	virtual void display();
-	virtual void generateWall();
-	virtual void generateExit();
-
-	friend class robot;
 };
 
 #endif

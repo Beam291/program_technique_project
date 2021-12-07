@@ -4,28 +4,25 @@
 #include "maze.h"
 
 class randomMaze : public maze {
-private: 
-	int row, col;
-	int wallLength, wallNumber;
+private:
+	int wallNumber, wallLength;
 
 public:
-	//constructor
-	randomMaze(int row, int col, int wallLength, int wallNumber);
+	//Constructor
+	randomMaze(int col, int row, int wallNumber, int WallLength);
 	
-	//destructor
+	//Destructor
 	~randomMaze();
 
-	//getter
+	//Getter
 	int getWallNumber() const;
 	int getWallLength() const;
 
-	//setter
+	//Setter
 	void setWallNumber(int wallNumber);
 	void setWallLength(int wallLength);
 
 	void display() override;
-	void generateWall() override;
-	void generateExit() override;
 
 };
 
