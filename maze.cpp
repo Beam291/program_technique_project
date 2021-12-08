@@ -28,17 +28,24 @@ void maze::setCol(int col) {
 }
 
 void maze::mazeStructure() {
-	std::vector<std::vector<int>> mazeContainer (row, std::vector<int>(col, 0));
-	this->mazeContainer = mazeContainer;
+	std::vector<std::vector<int>> map (row, std::vector<int>(col, 0));
+	this->map = map;
+}
+
+void maze::generateWall() {
+}
+
+void maze::generateExit() {
 }
 
 void maze::display(){
-	for (int i = 0; i < mazeContainer.size(); i++)
+	for (int i = 0; i < map.size(); i++)
 	{
-		for (int j = 0; j < mazeContainer[i].size(); j++)
+		for (int j = 0; j < map[i].size(); j++)
 		{
-			std::cout << mazeContainer[i][j] << " ";
+			std::cout << map[i][j] << " ";
 		}
 		std::cout << std::endl;
 	}
+	//std::cout << map.size();
 }

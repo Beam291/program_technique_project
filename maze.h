@@ -5,14 +5,14 @@
 #include <iostream>
 
 class maze {
-private:
+protected:
 	int row, col; // row and column
-	std::vector<std::vector<int>> mazeContainer; //use vector of vector to contain maze info
+	std::vector<std::vector<int>> map; //use vector of vector to contain maze info
 
 public:
 	//contructor
 	maze();
-	maze(int row, int col);
+	maze(int col, int row);
 
 	//destructor
 	~maze();
@@ -25,7 +25,9 @@ public:
 	void setRow(int row);
 	void setCol(int col);
 
-	void mazeStructure();
+	virtual void mazeStructure();
+	virtual void generateWall();
+	virtual void generateExit();
 	virtual void display();
 };
 

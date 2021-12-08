@@ -18,6 +18,17 @@
       <Platform>x64</Platform>
     </ProjectConfiguration>
   </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="main.cpp" />
+    <ClCompile Include="maze.cpp" />
+    <ClCompile Include="point2D.cpp" />
+    <ClCompile Include="randomMaze.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="maze.h" />
+    <ClInclude Include="point2D.hpp" />
+    <ClInclude Include="randomMaze.h" />
+  </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
     <Keyword>Win32Proj</Keyword>
@@ -138,21 +149,6 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
     </Link>
   </ItemDefinitionGroup>
-  <ItemGroup>
-    <ClInclude Include="crazyRobot.h" />
-    <ClInclude Include="maze.h" />
-    <ClInclude Include="Point2D.h" />
-    <ClInclude Include="randomMaze.h" />
-    <ClInclude Include="robot.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClCompile Include="crazyRobot.cpp" />
-    <ClCompile Include="maze.cpp" />
-    <ClCompile Include="Point2D.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="randomMaze.cpp" />
-    <ClCompile Include="robot.cpp" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

@@ -6,10 +6,11 @@
 class randomMaze : public maze {
 private:
 	int wallNumber, wallLength;
+	int col, row;
 
 public:
 	//Constructor
-	randomMaze(int col, int row, int wallNumber, int WallLength);
+	randomMaze(int col, int row, int wallNumber, int wallLength);
 	
 	//Destructor
 	~randomMaze();
@@ -22,8 +23,11 @@ public:
 	void setWallNumber(int wallNumber);
 	void setWallLength(int wallLength);
 
+	void mazeStructure() override;
 	void display() override;
 
+	void generateWall() override;
+	void generateExit() override;
 };
 
 #endif
