@@ -12,7 +12,7 @@ protected:
 public:
 	//contructor
 	maze();
-	maze(int col, int row);
+	maze(int row, int col);
 
 	//destructor
 	~maze();

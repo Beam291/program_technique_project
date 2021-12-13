@@ -10,7 +10,7 @@ private:
 
 public:
 	//Constructor
-	randomMaze(int col, int row, int wallNumber, int wallLength);
+	randomMaze(int row, int col, int wallNumber, int wallLength);
 	
 	//Destructor
 	~randomMaze();

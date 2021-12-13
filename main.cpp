@@ -19,12 +19,14 @@ int main() {
 	std::system("cls");*/
 
 	std::cout << "EXERCISE 2: CREATE RANDOMMAZE WITH WALL" << std::endl << std::endl;
+
 	//wallLength restrict: it's can't be larger than row or col
-	//col, row, wallNumber, wallLength
-	maze* RM = new randomMaze(15, 10, 6, 4);
+	//format: row, col wallNumber, wallLength
+	maze* RM = new randomMaze(15, 20, 10, 6);
 	RM->mazeStructure();
 	RM->generateWall();
-	//RM->display();
+	RM->generateExit();
+	RM->display();
 
 	std::cout << std::endl;
 
