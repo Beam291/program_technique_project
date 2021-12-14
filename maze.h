@@ -25,10 +25,11 @@ public:
 	void setRow(int row);
 	void setCol(int col);
 
-	virtual void mazeStructure();
-	virtual void generateWall();
-	virtual void generateExit();
-	virtual void display();
+	virtual void mazeStructure(); //create maze
+	virtual void generateWall(); //generate wall
+	virtual void display(); //display
+
+	friend class robot;
 };
 
 #endif

@@ -34,21 +34,31 @@ void randomMaze::mazeStructure() {
 }
 
 void randomMaze::display() {
-	maze::display();
-	//std::cout << map.size() << std::endl;
-}
-
-void randomMaze::generateWall() {
 	if (wallLength < 0) { //wallLength cannot negative
 		std::cout << "Your input is invalid" << std::endl;
 		return;
 	}
-	if (wallLength > map.size()){ //wallLength cannot larger than row
+	else if (wallLength > map.size()) { //wallLength cannot larger than row
 		std::cout << "Your input is invalid" << std::endl;
 		return;
 	}
-	if (wallLength > map[0].size()) { //wallLength cannot larger than col
+	else if (wallLength > map[0].size()) { //wallLength cannot larger than col
 		std::cout << "Your input is invalid" << std::endl;
+		return;
+	}
+	else {
+		maze::display();
+	}
+}
+
+void randomMaze::generateWall() {
+	if (wallLength < 0) { //wallLength cannot negative
+		return;
+	}
+	else if (wallLength > map.size()) { //wallLength cannot larger than row
+		return;
+	}
+	else if (wallLength > map[0].size()) { //wallLength cannot larger than col
 		return;
 	}
 
@@ -63,8 +73,6 @@ void randomMaze::generateWall() {
 			hw += 1;
 		}
 	}
-
-	//std::cout << vw << " " << hw << std::endl << std::endl;
 
 	int valid = true; //valid position, object can't get through valid
 
@@ -116,11 +124,10 @@ void randomMaze::generateWall() {
 			++chw; //increase hw each time create a horizontal wall
 		} while (chw < vw);
 	}
-}
 
-void randomMaze::generateExit() {
+	//generate exit point
 	srand(time(NULL));
-	for(int i = 0; i < row; i++){
+	for (int i = 0; i < row; i++) {
 		for (int j = 0; j < col; j++) {
 			int x = rand() % (row - 1);
 			int y = rand() % (col - 1);

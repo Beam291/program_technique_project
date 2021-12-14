@@ -27,7 +27,6 @@ public:
 	void display() override;
 
 	void generateWall() override;
-	void generateExit() override;
 };
 
 #endif
