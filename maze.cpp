@@ -35,9 +35,6 @@ void maze::mazeStructure() {
 void maze::generateWall() {
 }
 
-void maze::generateExit() {
-}
-
 void maze::display(){
 	for (int i = 0; i < map.size(); i++)
 	{
