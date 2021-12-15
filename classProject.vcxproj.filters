@@ -21,7 +21,7 @@
     <ClCompile Include="maze.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Point2D.cpp">
+    <ClCompile Include="point2D.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="randomMaze.cpp">
@@ -38,7 +38,7 @@
     <ClInclude Include="maze.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="Point2D.hpp">
+    <ClInclude Include="point2D.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="randomMaze.h">

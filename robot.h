@@ -15,6 +15,8 @@ protected:
 	std::vector<std::vector<int>> map_r;
 	
 public:
+	std::vector<std::vector<int>> public_map_r;
+
 	//contructor
 	robot();
 	robot(Point2D initPos);
@@ -22,6 +24,7 @@ public:
 
 	void readMaze(maze* rm) {
 		map_r = rm->map; //recived information about maze structure
+		public_map_r = map_r;
 	}
 
 	//destrucor
