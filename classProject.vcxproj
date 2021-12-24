@@ -25,6 +25,7 @@
     <ClCompile Include="point2D.cpp" />
     <ClCompile Include="randomMaze.cpp" />
     <ClCompile Include="robot.cpp" />
+    <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="crazyRobot.h" />
@@ -32,6 +33,7 @@
     <ClInclude Include="point2D.hpp" />
     <ClInclude Include="randomMaze.h" />
     <ClInclude Include="robot.h" />
+    <ClInclude Include="utility.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

@@ -2,6 +2,7 @@
 #define RANDOMMAZE_
 
 #include "maze.h"
+#include "robot.h"
 
 class randomMaze : public maze {
 private:
@@ -10,7 +11,7 @@ private:
 
 public:
 	//Constructor
-	randomMaze(int row, int col, int wallNumber, int wallLength);
+	randomMaze(int row, int col, int wallNumber, int wallLength, std::vector<robot*> rblist);
 	
 	//Destructor
 	~randomMaze();
@@ -27,6 +28,8 @@ public:
 	void display() override;
 
 	void generateWall() override;
+
+	friend class robot;
 };
 
 #endif

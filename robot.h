@@ -27,7 +27,7 @@ public:
 		public_map_r = map_r;
 	}
 
-	//destrucor
+	//destructor
 	~robot();
 
 	//getter
@@ -37,7 +37,7 @@ public:
 	//setter
 	void setInitPos(); //random position
 	void setInitPos(Point2D initPos); //position which has been pre-defined
-	void setCovered(Point2D newPos); //covered will get new position which cover all point of robot
+	void setCovered(Point2D newPos); //covered will get new position 
 
 	virtual void go();
 	void randGo();

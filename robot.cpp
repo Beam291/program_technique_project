@@ -52,50 +52,51 @@ void robot::go() {
 
 }
 
-void robot::randGo() {
-	std::vector<int> dx = { -1,1 };
-	std::vector<int> dy = { -1, 1 };
 
-	bool check = true; //check if the place robot stands is valid or not
-	int rx = 0; //random from dx
-	int ry = 0; //random from dy
-	int visited = 0;
+void robot::randGo() {
+	//the robot can only go up, down, left, right
+	std::vector<int> dx = { 1, 0, -1, 0 };
+	std::vector<int> dy = { 0, 1, 0, -1 };
+
+	bool check = true; //check if the place robot stands is valid or not (0 in maze)
+	int rp = 0; //random movement
+	int visited = 0; //visted place
 
 	while (check == true) {
-		rx = rand() % 2;
-		ry = rand() % 2;
+		rp = rand() % 4;
 
 		//condition which robot cannot move any more, so it has to find another way around
-		if (rx == 0 && initPos.getX() == 0) {
+		if (rp == 0 && initPos.getX() == (map_r.size() - 1)) {
 			continue;
-		}
-		if (rx == 1 && initPos.getX() == (map_r.size() - 1)) {
+		} //robot cannot move down
+		if (rp == 1 && initPos.getY() == (map_r[0].size() - 1)) {
 			continue;
-		}
-		if (ry == 0 && initPos.getY() == 0) {
+		} //robot cannot move right
+		if (rp == 2 && initPos.getX() == 0) {
 			continue;
-		}
-		if (ry == 1 && initPos.getY() == (map_r[0].size() - 1)) {
+		} //robot cannot move left
+		if (rp == 3 && initPos.getY() == 0) {
 			continue;
-		}
-		if (map_r[initPos.getX() + dx[rx]][initPos.getY() + dy[ry]] == 1) {
+		} //robot cannot move up
+		if (map_r[initPos.getX() + dx[rp]][initPos.getY() + dy[rp]] == 1) {
 			continue;
 		} //robot cannot step in wall
 
 		//If the robot pass these condition, robot can move normally 
-		Point2D newPos(initPos.getX() + dx[rx], initPos.getY() + dy[ry]); //move to new position
-		if (std::count(covered.begin(), covered.end(), newPos) && visited < 3)
+		Point2D newPos(initPos.getX() + dx[rp], initPos.getY() + dy[rp]); //move to new position
+		if (std::count(covered.begin(), covered.end(), newPos) && visited < 3)  
+			//the new position cannot be visited 3 times so the robot can move to many different position
 		{
 			visited += 1;
 			continue;
 		}
 
-	check = false;
+		check = false; //if not valid, stop moving (outside maze or step on 1)
 	}
 
 	covered.push_back(initPos);
 	map_r[initPos.getX()][initPos.getY()] = 0; /* Clear old position */
 
-	initPos.setX(initPos.getX() + dx[rx]);
-	initPos.setY(initPos.getY() + dy[ry]);
+	initPos.setX(initPos.getX() + dx[rp]);
+	initPos.setY(initPos.getY() + dy[rp]);
 }

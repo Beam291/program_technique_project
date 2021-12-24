@@ -1,38 +1,81 @@
 #include "maze.h"
 #include "randomMaze.h"
+#include "robot.h"
+#include "crazyRobot.h"
 #include "Point2D.hpp"
+#include "utility.h"
 
 #include <iostream>
 #include <Windows.h>
 
 int main() {
-	//std::cout << "EXERCISE 1: CREATE MAZE" << std::endl << std::endl;
+	std::vector<robot*> robots;
+	std::vector<int> check_list; //check if robot is on the field or not
 
-	//maze* M = new maze(15, 20);
-	//M->mazeStructure();
-	//M->display();
+	std::cout << "EXERCISE 1: CREATE MAZE" << std::endl << std::endl;
 
-	//std::cout << std::endl;
+	maze* M = new maze(15, 20, robots);
+	M->mazeStructure();
+	M->display();
 
-	//std::cout << "Press ENTER to continue..." << std::endl;
-	//getchar();
+	std::cout << "Press ENTER to continue..." << std::endl;
+	getchar();
 
-	//std::system("cls");
+	std::system("cls");
 
-	//std::cout << "EXERCISE 2: CREATE RANDOMMAZE WITH WALL" << std::endl << std::endl;
+	std::cout << "EXERCISE 2: CREATE RANDOMMAZE WITH WALL" << std::endl << std::endl;
 
-	////wallLength restrict: it's can't be larger than row or col
-	////format: row, col wallNumber, wallLength
-	//maze* RM = new randomMaze(15, 20, 4, 5);
-	//RM->mazeStructure();
-	//RM->generateWall();
-	//RM->display();
+	//wallLength restrict: it's can't be larger than row or col
+	//format: row, col wallNumber, wallLength, list of robot
+	maze* RM = new randomMaze(15, 20, 4, 5, robots);
+	RM->mazeStructure();
+	RM->generateWall();
+	RM->display();
 
-	//std::cout << std::endl;
+	std::cout << "Press ENTER to continue..." << std::endl;
 
-	//std::cout << "Press ENTER to continue..." << std::endl;
-	//getchar();
+	getchar();
 
-	/*Point2D* P = new Point2D(3, 4);
-	P->display();*/
+	std::system("cls");
+
+	robot* cr = new crazyRobot(); robots.push_back(cr);
+
+	RM->setRblist(robots);
+	for (int i = 0; i < (RM->getRblist().size()); i++) {
+		check_list.push_back(0); //check_list will add the status of robot to 0 (0 mean not on the field)
+	}
+
+	while (true){
+		gotoxy(0, 0);
+		std::cout << "EXERCISE 10: TEST ALL ROBOTS AND THEIR MOMEVENT";
+
+		gotoxy(0, 2);
+		std::cout << "Press ENTER to make robot move | Press ESC then ENTER to next excercise";
+		
+		gotoxy(0, 4);
+		RM->display();
+		for (unsigned int i = 0; i < (RM->getRblist().size()); i++) {
+			RM->getRblist()[i]->readMaze(RM);
+
+			if (check_list[i] == 0) {
+				RM->getRblist()[i]->setInitPos(); //spawn robot
+				check_list[i] = 1; //robot spawn and check_list will turn to 1
+			}
+			RM->getRblist()[i]->go();
+
+			robotDisplay(RM->getRblist()[i]->getInitPos().getX(),
+				RM->getRblist()[i]->getInitPos().getY(), 
+				RM->getRblist()[i]->public_map_r[robots[i]->getInitPos().getX()][RM->getRblist()[i]->getInitPos().getY()]);
+
+			if (GetAsyncKeyState(VK_ESCAPE)) {
+				break;
+			}
+			else {
+				getchar();
+			}
+	}
+
+	
+	
+	std::system("cls");
 }

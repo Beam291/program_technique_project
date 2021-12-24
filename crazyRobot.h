@@ -5,6 +5,8 @@
 
 #include <iostream>
 
+class randomMaze;
+
 class crazyRobot : public robot {
 private:
 	

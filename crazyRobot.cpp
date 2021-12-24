@@ -38,9 +38,15 @@ void crazyRobot::setCovered(Point2D newPos) {
 
 void crazyRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
-		std::cout << "crazyRobot have been escaped" << std::endl;
+		//std::cout << "crazyRobot have been escaped" << std::endl;
 	}
 	else {
+		this->randGo();
+		map_r[initPos.getX()][initPos.getY()] = 3;
 
+		//security measure if there is some change public_map
+		if (public_map_r != map_r) {
+			public_map_r = map_r;
+		}
 	}
 }

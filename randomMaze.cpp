@@ -2,8 +2,8 @@
 
 #include <iostream>
 
-randomMaze::randomMaze(int row, int col, int wallNumber, int wallLength)
-	: maze(row, col) {
+randomMaze::randomMaze(int row, int col, int wallNumber, int wallLength, std::vector<robot*> rblist)
+	: maze(row, col, rblist) {
 	this->row = row;
 	this->col = col;
 	this->wallNumber = wallNumber;

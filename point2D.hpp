@@ -23,6 +23,11 @@ class Point2D
 
      void display();
 
+     inline bool operator==(const Point2D& p)
+     {
+         return (x == p.x && y == p.y);
+     }
+
    private :
 
      // Attributes
