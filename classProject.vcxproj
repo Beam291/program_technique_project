@@ -20,19 +20,31 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="crazyRobot.cpp" />
+    <ClCompile Include="downRobot.cpp" />
+    <ClCompile Include="jumpRobot.cpp" />
+    <ClCompile Include="leftRobot.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="maze.cpp" />
     <ClCompile Include="point2D.cpp" />
     <ClCompile Include="randomMaze.cpp" />
+    <ClCompile Include="rightRobot.cpp" />
     <ClCompile Include="robot.cpp" />
+    <ClCompile Include="smartRobot.cpp" />
+    <ClCompile Include="upRobot.cpp" />
     <ClCompile Include="utility.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="crazyRobot.h" />
+    <ClInclude Include="downRobot.h" />
+    <ClInclude Include="jumpRobot.h" />
+    <ClInclude Include="leftRobot.h" />
     <ClInclude Include="maze.h" />
     <ClInclude Include="point2D.hpp" />
     <ClInclude Include="randomMaze.h" />
+    <ClInclude Include="rightRobot.h" />
     <ClInclude Include="robot.h" />
+    <ClInclude Include="smartRobot.h" />
+    <ClInclude Include="upRobot.h" />
     <ClInclude Include="utility.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">

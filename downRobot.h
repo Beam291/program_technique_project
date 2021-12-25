@@ -1,20 +1,19 @@
-#ifndef LEFTROBOT_
-#define LEFTROBOT_
+#ifndef DOWNROBOT_
+#define DOWNROBOT_
 
-#include "point2D.hpp"
 #include "robot.h"
 
-class leftRobot : public robot {
+class downRobot : public robot {
 private:
 
 public:
 	//constructor
-	leftRobot();
-	leftRobot(Point2D initPos);
-	leftRobot(Point2D initPos, std::vector<Point2D> covered);
+	downRobot();
+	downRobot(Point2D initPos);
+	downRobot(Point2D initPos, std::vector<Point2D> covered);
 
 	//destructor
-	~leftRobot();
+	~downRobot();
 
 	//getter
 	Point2D getInitPos() const;
@@ -28,5 +27,5 @@ public:
 	void go() override;
 };
 
-#endif LEFTROBOT_
+#endif
 

@@ -4,15 +4,20 @@
 #include "crazyRobot.h"
 #include "Point2D.hpp"
 #include "utility.h"
+#include "leftRobot.h"
+#include "rightRobot.h"
+#include "upRobot.h"
+#include "downRobot.h"
+#include "jumpRobot.h"
 
 #include <iostream>
 #include <Windows.h>
 
 int main() {
 	std::vector<robot*> robots;
-	std::vector<int> check_list; //check if robot is on the field or not
+	std::vector<bool> check_list; //check if robot is on the field or not
 
-	std::cout << "EXERCISE 1: CREATE MAZE" << std::endl << std::endl;
+	/*std::cout << "EXERCISE 1: CREATE MAZE" << std::endl << std::endl;
 
 	maze* M = new maze(15, 20, robots);
 	M->mazeStructure();
@@ -21,7 +26,7 @@ int main() {
 	std::cout << "Press ENTER to continue..." << std::endl;
 	getchar();
 
-	std::system("cls");
+	std::system("cls");*/
 
 	std::cout << "EXERCISE 2: CREATE RANDOMMAZE WITH WALL" << std::endl << std::endl;
 
@@ -30,31 +35,41 @@ int main() {
 	maze* RM = new randomMaze(15, 20, 4, 5, robots);
 	RM->mazeStructure();
 	RM->generateWall();
-	RM->display();
+	/*RM->display();
 
-	std::cout << "Press ENTER to continue..." << std::endl;
+	std::cout << "Press ENTER to next excercise..." << std::endl;
 
 	getchar();
 
-	std::system("cls");
+	std::system("cls");*/
 
-	robot* cr = new crazyRobot(); robots.push_back(cr);
+	//create robot and add it to robot list
+	robot* cr = new crazyRobot(); robots.push_back(cr); //ex3
+	robot* lr = new leftRobot(); robots.push_back(lr); //ex4
+	robot* rr = new rightRobot(); robots.push_back(rr); //ex5
+	robot* ur = new upRobot(); robots.push_back(ur); //ex5
+	robot* dr = new downRobot(); robots.push_back(dr); //ex5
+	robot* jr = new jumpRobot(); robots.push_back(jr); //ex6
+	//put every kind of step if you want how robot to jump here
+	//remember if your input larger than maze height or length, your robot won't move
+	jr->setJumpStep(30); 
+
 
 	RM->setRblist(robots);
-	for (int i = 0; i < (RM->getRblist().size()); i++) {
-		check_list.push_back(0); //check_list will add the status of robot to 0 (0 mean not on the field)
+	for (int i = 0; i < RM->getRblist().size(); i++) {
+		check_list.push_back(false); //check_list will add the status of robot to false (false mean not on the field)
 	}
 
-	while (true){
-		gotoxy(0, 0);
-		std::cout << "EXERCISE 10: TEST ALL ROBOTS AND THEIR MOMEVENT";
+	gotoxy(0, 0);
+	std::cout << "EXERCISE 10: TEST ALL ROBOTS AND THEIR MOMEVENT";
 
-		gotoxy(0, 2);
-		std::cout << "Press ENTER to make robot move | Press ESC then ENTER to next excercise";
-		
+	gotoxy(0, 2);
+	std::cout << "Press ENTER to make robot move | Press ESC then ENTER to next excercise";
+
+	while (true) {
 		gotoxy(0, 4);
 		RM->display();
-		for (unsigned int i = 0; i < (RM->getRblist().size()); i++) {
+		for (unsigned int i = 0; i < RM->getRblist().size(); i++) {
 			RM->getRblist()[i]->readMaze(RM);
 
 			if (check_list[i] == 0) {
@@ -64,18 +79,20 @@ int main() {
 			RM->getRblist()[i]->go();
 
 			robotDisplay(RM->getRblist()[i]->getInitPos().getX(),
-				RM->getRblist()[i]->getInitPos().getY(), 
+				RM->getRblist()[i]->getInitPos().getY(),
 				RM->getRblist()[i]->public_map_r[robots[i]->getInitPos().getX()][RM->getRblist()[i]->getInitPos().getY()]);
 
-			if (GetAsyncKeyState(VK_ESCAPE)) {
-				break;
-			}
-			else {
-				getchar();
-			}
+			///* Set cursor */
+			//gotoxy(0, RM->getRblist()[i]->public_map_r.size() + 2);
+		}
+
+		if (GetAsyncKeyState(VK_ESCAPE)) {
+			break;
+		}
+		else {
+			getchar();
+		}
 	}
 
-	
-	
 	std::system("cls");
 }

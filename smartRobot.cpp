@@ -1,44 +1,44 @@
-#include "crazyRobot.h"
+#include "smartRobot.h"
 
-crazyRobot::crazyRobot() : robot() {
+smartRobot::smartRobot() : robot() {
 }
 
-crazyRobot::crazyRobot(Point2D initPos) : robot(initPos) {
+smartRobot::smartRobot(Point2D initPos) : robot(initPos) {
 
 }
 
-crazyRobot::crazyRobot(Point2D initPos, std::vector<Point2D> covered) :
+smartRobot::smartRobot(Point2D initPos, std::vector<Point2D> covered) :
 	robot(initPos, covered) {
 }
 
-crazyRobot::~crazyRobot() {
+smartRobot::~smartRobot() {
 
 }
 
-Point2D crazyRobot::getInitPos() const {
+Point2D smartRobot::getInitPos() const {
 	return this->initPos;
 }
 
-std::vector<Point2D> crazyRobot::getCovered() const {
+std::vector<Point2D> smartRobot::getCovered() const {
 	return this->covered;
 }
 
-void crazyRobot::setInitPos() {
+void smartRobot::setInitPos() {
 
 }
 
-void crazyRobot::setInitPos(Point2D initPos) {
+void smartRobot::setInitPos(Point2D initPos) {
 	this->initPos.setX(initPos.getX());
 	this->initPos.setX(initPos.getX());
 }
 
-void crazyRobot::setCovered(Point2D newPos) {
+void smartRobot::setCovered(Point2D newPos) {
 	this->covered.push_back(newPos);
 }
 
-void crazyRobot::go() {
+void smartRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
-		//std::cout << "crazyRobot have been escaped" << std::endl;
+		//std::cout << "smartRobot have been escaped" << std::endl;
 	}
 	else {
 		//the robot can only go up, down, left, right
@@ -78,16 +78,16 @@ void crazyRobot::go() {
 				continue;
 			}
 
-			covered.push_back(initPos);
-			map_r[initPos.getX()][initPos.getY()] = 0; //clear old position 
-
-			initPos.setX(initPos.getX() + dx[rp]);
-			initPos.setY(initPos.getY() + dy[rp]);
-
-			map_r[initPos.getX()][initPos.getY()] = 3;
-
 			check = false; //if not valid, stop moving (outside maze or step on 1 or just out of place to move)
 		}
+
+		covered.push_back(initPos);
+		map_r[initPos.getX()][initPos.getY()] = 0; //clear old position 
+
+		initPos.setX(initPos.getX() + dx[rp]);
+		initPos.setY(initPos.getY() + dy[rp]);
+
+		map_r[initPos.getX()][initPos.getY()] = 3;
 
 		//security measure if there is some change public_map
 		if (public_map_r != map_r) {

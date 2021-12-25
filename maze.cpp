@@ -45,11 +45,21 @@ void maze::generateWall() {
 }
 
 void maze::display(){
-	for (int i = 0; i < map.size(); i++)
-	{
-		for (int j = 0; j < map[i].size(); j++)
-		{
-			std::cout << map[i][j] << " ";
+	char dot = '.';
+	char plus = '+';
+	char x = 'x';
+
+	for (auto i : map) {
+		for (int j : i) {
+			if (j == 0) {
+				std::cout << dot << " ";
+			}
+			else if (j == 1) {
+				std::cout << plus << " ";
+			}
+			else if (j == 2) {
+				std::cout << x << " ";
+			}
 		}
 		std::cout << std::endl;
 	}

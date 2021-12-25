@@ -12,7 +12,8 @@ class robot {
 protected:
 	Point2D initPos;
 	std::vector<Point2D> covered;
-	std::vector<std::vector<int>> map_r;
+	std::vector<std::vector<int>> map_r; //copy a map for robot to read
+	int jumpStep;
 	
 public:
 	std::vector<std::vector<int>> public_map_r;
@@ -33,16 +34,15 @@ public:
 	//getter
 	Point2D getInitPos() const;
 	std::vector<Point2D> getCovered() const;
+	int getJumpStep() const;
 	
 	//setter
 	void setInitPos(); //random position
 	void setInitPos(Point2D initPos); //position which has been pre-defined
 	void setCovered(Point2D newPos); //covered will get new position 
+	void setJumpStep(int jumpStep); //For jump robot
 
 	virtual void go();
-	void randGo();
 };
-
-
 #endif
 

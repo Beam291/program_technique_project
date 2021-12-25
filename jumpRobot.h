@@ -1,20 +1,18 @@
-#ifndef LEFTROBOT_
-#define LEFTROBOT_
+#ifndef JUMPROBOT_
+#define JUMPROBOT_
 
-#include "point2D.hpp"
 #include "robot.h"
 
-class leftRobot : public robot {
+class jumpRobot : public robot {
 private:
-
 public:
 	//constructor
-	leftRobot();
-	leftRobot(Point2D initPos);
-	leftRobot(Point2D initPos, std::vector<Point2D> covered);
+	jumpRobot();
+	jumpRobot(Point2D initPos);
+	jumpRobot(Point2D initPos, std::vector<Point2D> covered);
 
 	//destructor
-	~leftRobot();
+	~jumpRobot();
 
 	//getter
 	Point2D getInitPos() const;
@@ -28,5 +26,5 @@ public:
 	void go() override;
 };
 
-#endif LEFTROBOT_
+#endif
 
