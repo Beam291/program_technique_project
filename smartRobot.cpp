@@ -57,7 +57,7 @@ void smartRobot::go() {
 			} //robot cannot move right
 			if (i == 2 && initPos.getX() == 0) {
 				continue;
-			} //robot cannot move left
+			} //robot cannot move left 
 			if (i == 3 && initPos.getY() == 0) {
 				continue;
 			} //robot cannot move up
@@ -68,7 +68,7 @@ void smartRobot::go() {
 			Point2D potential_direction(initPos.getX() + dx[i], initPos.getY() + dy[i]);
 
 			potential.push_back(potential_direction);
-		}
+		} //check ok
 
 		std::vector<int> score_list; //list of score
 
@@ -80,29 +80,35 @@ void smartRobot::go() {
 			std::vector<int> score; //score of a neighbor
 
 			for (int j = 0; j < 4; j++) {
-				if (j == 0 && initPos.getX() == (map_r.size() - 1)) {
+				if (j == 0 && i.getX() == (map_r.size() - 1)) {
 					continue;
 				} //robot cannot move down
-				if (j == 1 && initPos.getY() == (map_r[0].size() - 1)) {
+				if (j == 1 && i.getY() == (map_r[0].size() - 1)) {
 					continue;
 				} //robot cannot move right
-				if (j == 2 && initPos.getX() == 0) {
+				if (j == 2 && i.getX() == 0) {
 					continue;
 				} //robot cannot move left
-				if (j == 3 && initPos.getY() == 0) {
+				if (j == 3 && i.getY() == 0) {
 					continue;
 				} //robot cannot move up
 				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 1) {
 					continue;
 				} //robot cannot step in wall
-				if (i.getX() + dx[j] == initPos.getX() &&
-					i.getY() + dy[j] == initPos.getY()) {
-					continue;
+				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 
+					map_r[initPos.getX()][initPos.getY()]){
+					score.push_back(0);
 				}//robot can't go back to start position
 
 				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 0) {
 					score.push_back(1);
-				} //if that place is free cell, add 1
+				}//free cell, add 1
+				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] != 0) {
+					score.push_back(0);
+				}//if not free cell, add 0
+				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 2) {
+					score.push_back(1);
+				}//exit point, add 1
 			}
 
 			for (int n : score) {
@@ -113,64 +119,35 @@ void smartRobot::go() {
 		}
 
 		int rp; //random direction in case there are more than 1 max score
-		
+		int max_score = *max_element(score_list.begin(), score_list.end()); //find max score
 		std::vector<int> max_index; //index of a direction with max score
 
-		for (int i : score_list) {
-			int max_score = *max_element(score_list.begin(), score_list.end());
-			int count_max = std::count(score_list.begin(), score_list.end(), max_score);
-			if (count_max > 1) {
-				if (score_list[i] == max_score) {
-					max_index.push_back(i);
-				}
+		for (int i = 0; i < score_list.size(); i++) {
+			if (score_list[i] == max_score) {
+				max_index.push_back(i);
 			}
+		}
+
+		for (int i : max_index) {
 			std::cout << i << " ";
 		}
 
-		/*for (auto i : potential) {
-			i.display();
-		}*/
 
-		//std::vector<int> neighbor = { 1, 1, 1 };
+		int count_max = std::count(score_list.begin(), score_list.end(), max_score);//count max in case there are more than 1 number max
+		rp = rand() % count_max;
 
-		//bool check = true; //check if the place robot stands is valid or not (0 in maze)
-		//int rp = 0; //random movement
-		//int visited = 0; //visted place
-		//int pd = 0; // potential direction
-		//int sensor = 1; // sensor will check position around it
+		int newX = potential[rp].getX();
+		int newY = potential[rp].getY();
 
-		//while (check == true) {
-		//	bool check_score = true;
-		//	int score = 0; //score
-		//	rp = rand() % 4;
+		covered.push_back(initPos);
+		map_r[initPos.getX()][initPos.getY()] = 0; //clear old position 
 
-		//	//condition which robot cannot move any more, so it has to find another way around
-		//	if (rp == 0 && initPos.getX() == (map_r.size() - 1)) {
-		//		continue;
-		//	} //robot cannot move down
-		//	if (rp == 1 && initPos.getY() == (map_r[0].size() - 1)) {
-		//		continue;
-		//	} //robot cannot move right
-		//	if (rp == 2 && initPos.getX() == 0) {
-		//		continue;
-		//	} //robot cannot move left
-		//	if (rp == 3 && initPos.getY() == 0) {
-		//		continue;
-		//	} //robot cannot move up
-		//	if (map_r[initPos.getX() + dx[rp]][initPos.getY() + dy[rp]] == 1) {
-		//		continue;
-		//	} //robot cannot step in wall
+		initPos.setX(newX);
+		initPos.setY(newY);
 
-		//	check = false; //if not valid, stop moving (outside maze or step on 1 or just out of place to move)
-		//}
-
-		//std::cout << rp;
-
-		//covered.push_back(initPos);
-		//map_r[initPos.getX()][initPos.getY()] = 0; //clear old position 
-
-		//initPos.setX(initPos.getX() + dx[rp]);
-		//initPos.setY(initPos.getY() + dy[rp]);
+		potential.clear();
+		score_list.clear();
+		max_index.clear();
 
 		map_r[initPos.getX()][initPos.getY()] = 9;
 

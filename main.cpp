@@ -55,8 +55,6 @@ int main() {
 	//remember if your input larger than maze height or length, your robot won't move
 	jr->setJumpStep(2);
 	robot* sr = new smartRobot(); robots.push_back(sr); //ex8
-	
-
 
 	RM->setRblist(robots);
 	for (int i = 0; i < RM->getRblist().size(); i++) {

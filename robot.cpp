@@ -33,7 +33,7 @@ int robot::getJumpStep() const {
 }
 
 void robot::setInitPos(){
-	bool spawned = false;
+	bool spawned = false; //default spawned: false 
 	while (spawned != true) {
 		int x = rand() % (map_r.size() - 1);
 		int y = rand() % (map_r[0].size() - 1);
