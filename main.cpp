@@ -9,6 +9,7 @@
 #include "upRobot.h"
 #include "downRobot.h"
 #include "jumpRobot.h"
+#include "smartRobot.h"
 
 #include <iostream>
 #include <Windows.h>
@@ -52,7 +53,9 @@ int main() {
 	robot* jr = new jumpRobot(); robots.push_back(jr); //ex6
 	//put every kind of step if you want how robot to jump here
 	//remember if your input larger than maze height or length, your robot won't move
-	jr->setJumpStep(30); 
+	jr->setJumpStep(2);
+	robot* sr = new smartRobot(); robots.push_back(sr); //ex8
+	
 
 
 	RM->setRblist(robots);

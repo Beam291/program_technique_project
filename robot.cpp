@@ -1,4 +1,5 @@
 #include "robot.h"
+
 #include <iostream>
 
 robot::robot() {
@@ -53,13 +54,7 @@ void robot::setCovered(Point2D initPos) {
 }
 
 void robot::setJumpStep(int jumpStep) {
-	//jump step larger than height or length jump step will set to 0 so robot can't move
-	if (jumpStep > map_r.size() || jumpStep > map_r.size()) {
-		this->jumpStep = 0; 
-	}
-	else {
-		this->jumpStep = jumpStep;
-	}
+	this->jumpStep = jumpStep;
 }
 
 void robot::go() {

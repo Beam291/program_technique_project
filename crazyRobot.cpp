@@ -27,10 +27,10 @@ void crazyRobot::setInitPos() {
 
 }
 
-void crazyRobot::setInitPos(Point2D initPos) {
-	this->initPos.setX(initPos.getX());
-	this->initPos.setX(initPos.getX());
-}
+//void crazyRobot::setInitPos(Point2D initPos) {
+//	this->initPos.setX(initPos.getX());
+//	this->initPos.setX(initPos.getX());
+//}
 
 void crazyRobot::setCovered(Point2D newPos) {
 	this->covered.push_back(newPos);
@@ -78,16 +78,16 @@ void crazyRobot::go() {
 				continue;
 			}
 
-			covered.push_back(initPos);
-			map_r[initPos.getX()][initPos.getY()] = 0; //clear old position 
-
-			initPos.setX(initPos.getX() + dx[rp]);
-			initPos.setY(initPos.getY() + dy[rp]);
-
-			map_r[initPos.getX()][initPos.getY()] = 3;
-
 			check = false; //if not valid, stop moving (outside maze or step on 1 or just out of place to move)
 		}
+
+		covered.push_back(initPos);
+		map_r[initPos.getX()][initPos.getY()] = 0; //clear old position 
+
+		initPos.setX(initPos.getX() + dx[rp]);
+		initPos.setY(initPos.getY() + dy[rp]);
+
+		map_r[initPos.getX()][initPos.getY()] = 3;
 
 		//security measure if there is some change public_map
 		if (public_map_r != map_r) {

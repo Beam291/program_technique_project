@@ -50,27 +50,32 @@ void jumpRobot::go() {
 		int rp = 0; //random movement
 		int visited = 0; //visted place
 
+		//check if jumpStep can really use or not
+		if (jumpStep > map_r.size() || jumpStep > map_r[0].size()) {
+			jumpStep = 0;
+		}
+
 		while (check == true) {
 			rp = rand() % 4;
 
 			//condition which robot cannot move any more, so it has to find another way around
-			if (rp == 0 && initPos.getX()+jumpStep >= (map_r.size() - 1)) {
+			if (rp == 0 && initPos.getX() + jumpStep >= (map_r.size() - 1)) {
 				continue;
 			} //robot cannot move down
-			if (rp == 1 && initPos.getY() +jumpStep >= (map_r[0].size() - 1)) {
+			if (rp == 1 && initPos.getY() + jumpStep >= (map_r[0].size() - 1)) {
 				continue;
 			} //robot cannot move right
-			if (rp == 2 && initPos.getX()-jumpStep <= 0) {
+			if (rp == 2 && initPos.getX() - jumpStep <= 0) {
 				continue;
 			} //robot cannot move left
-			if (rp == 3 && initPos.getY()-jumpStep <= 0) {
+			if (rp == 3 && initPos.getY() - jumpStep <= 0) {
 				continue;
 			} //robot cannot move up
-			if (map_r[initPos.getX() + jumpStep*dx[rp]][initPos.getY() + jumpStep*dy[rp]] == 1) {
+			if (map_r[initPos.getX() + jumpStep * dx[rp]][initPos.getY() + jumpStep * dy[rp]] == 1) {
 				continue;
 			} //robot cannot step in wall
 
-			//If the robot pass these condition, robot can move normally
+			//If the robot pass these condition, robot can move normally 
 			Point2D newPos(initPos.getX() + jumpStep*dx[rp], initPos.getY() + jumpStep*dy[rp]); //move to new position
 			if (std::count(covered.begin(), covered.end(), newPos) && visited < 3)
 				//the new position cannot be visited 3 times so the robot can move to many different position
@@ -79,17 +84,18 @@ void jumpRobot::go() {
 				continue;
 			}
 
-			covered.push_back(initPos);
-
-			map_r[initPos.getX()][initPos.getY()] = 0; //clear old position 
-
-			initPos.setX(initPos.getX() + jumpStep * dx[rp]);
-			initPos.setY(initPos.getY() + jumpStep * dy[rp]);
-
-			map_r[initPos.getX()][initPos.getY()] = 8;
-
 			check = false; //if not valid, stop moving (outside maze or step on 1 or just out of place to move)
 		}
+
+		covered.push_back(initPos);
+
+		map_r[initPos.getX()][initPos.getY()] = 0; //clear old position 
+
+		initPos.setX(initPos.getX() + jumpStep * dx[rp]);
+		initPos.setY(initPos.getY() + jumpStep * dy[rp]);
+
+
+		map_r[initPos.getX()][initPos.getY()] = 8;
 
 		//security measure if there is some change public_map
 		if (public_map_r != map_r) {
