@@ -1,4 +1,5 @@
 #include "smartRobot.h"
+#include <algorithm>
 
 smartRobot::smartRobot() : robot() {
 }
@@ -44,7 +45,7 @@ void smartRobot::go() {
 		//the robot can only go up, down, left, right
 		std::vector<int> dx = { 1, 0, -1, 0 };
 		std::vector<int> dy = { 0, 1, 0, -1 };
-		std::vector<Point2D> poteintial;
+		std::vector<Point2D> potential;
 
 		//find potential direction
 		for (int i = 0; i < 4; i++) {
@@ -66,17 +67,17 @@ void smartRobot::go() {
 
 			Point2D potential_direction(initPos.getX() + dx[i], initPos.getY() + dy[i]);
 
-			poteintial.push_back(potential_direction);
+			potential.push_back(potential_direction);
 		}
 
 		std::vector<int> score_list; //list of score
 
 		//checking neighbor position
-		for (auto i : poteintial) {
-			int x = i.getX();
-			int y = i.getY();
-			int sum_score = 0;
-			std::vector<int> score;
+		for (auto i : potential) {
+			int x = i.getX(); //X
+			int y = i.getY(); //Y
+			int sum_score = 0; //sum score of a potential direction
+			std::vector<int> score; //score of a neighbor
 
 			for (int j = 0; j < 4; j++) {
 				if (j == 0 && initPos.getX() == (map_r.size() - 1)) {
@@ -97,24 +98,36 @@ void smartRobot::go() {
 				if (i.getX() + dx[j] == initPos.getX() &&
 					i.getY() + dy[j] == initPos.getY()) {
 					continue;
-				}
+				}//robot can't go back to start position
+
 				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 0) {
 					score.push_back(1);
-				}
+				} //if that place is free cell, add 1
 			}
 
 			for (int n : score) {
-				sum_score += n;
+				sum_score += n; //sum
 			}
 
-			score_list.push_back(sum_score);
+			score_list.push_back(sum_score); //put it to list score
 		}
 
+		int rp; //random direction in case there are more than 1 max score
+		
+		std::vector<int> max_index; //index of a direction with max score
+
 		for (int i : score_list) {
+			int max_score = *max_element(score_list.begin(), score_list.end());
+			int count_max = std::count(score_list.begin(), score_list.end(), max_score);
+			if (count_max > 1) {
+				if (score_list[i] == max_score) {
+					max_index.push_back(i);
+				}
+			}
 			std::cout << i << " ";
 		}
 
-		/*for (auto i : poteintial) {
+		/*for (auto i : potential) {
 			i.display();
 		}*/
 

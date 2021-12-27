@@ -98,4 +98,5 @@ int main() {
 	}
 
 	std::system("cls");
+
 }

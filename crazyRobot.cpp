@@ -27,10 +27,10 @@ void crazyRobot::setInitPos() {
 
 }
 
-//void crazyRobot::setInitPos(Point2D initPos) {
-//	this->initPos.setX(initPos.getX());
-//	this->initPos.setX(initPos.getX());
-//}
+void crazyRobot::setInitPos(Point2D initPos) {
+	this->initPos.setX(initPos.getX());
+	this->initPos.setX(initPos.getX());
+}
 
 void crazyRobot::setCovered(Point2D newPos) {
 	this->covered.push_back(newPos);
