@@ -29,9 +29,11 @@
     <ClCompile Include="randomMaze.cpp" />
     <ClCompile Include="rightRobot.cpp" />
     <ClCompile Include="robot.cpp" />
+    <ClCompile Include="scoreTree.cpp" />
     <ClCompile Include="smartRobot.cpp" />
     <ClCompile Include="upRobot.cpp" />
     <ClCompile Include="utility.cpp" />
+    <ClCompile Include="verySmartRobot.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="crazyRobot.h" />
@@ -43,9 +45,11 @@
     <ClInclude Include="randomMaze.h" />
     <ClInclude Include="rightRobot.h" />
     <ClInclude Include="robot.h" />
+    <ClInclude Include="scoreTree.h" />
     <ClInclude Include="smartRobot.h" />
     <ClInclude Include="upRobot.h" />
     <ClInclude Include="utility.h" />
+    <ClInclude Include="verySmartRobot.h" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>

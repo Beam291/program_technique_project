@@ -42,14 +42,15 @@ void upRobot::go() {
 	}
 	else {
 		//in case robot spawned in (0, n), robot can't not move, so X always != 0
-		if (initPos.getX() != 0
-			&& map_r[initPos.getX()-1][initPos.getY()] == 0)
-		{
-			covered.push_back(initPos);
-			map_r[initPos.getX()][initPos.getY()] = 0;  // Clear old position 
+		if (initPos.getX() != 0) {
+			if (map_r[initPos.getX() - 1][initPos.getY()] == 0 || map_r[initPos.getX() - 1][initPos.getY()] == 2)
+			{
+				covered.push_back(initPos);
+				map_r[initPos.getX()][initPos.getY()] = 0;  // Clear old position 
 
-			initPos.setX(initPos.getX()-1);
-			initPos.setY(initPos.getY());
+				initPos.setX(initPos.getX() - 1);
+				initPos.setY(initPos.getY());
+			}
 		}
 
 		map_r[initPos.getX()][initPos.getY()] = 6;

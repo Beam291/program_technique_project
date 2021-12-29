@@ -42,13 +42,14 @@ void leftRobot::go() {
 	}
 	else {
 		//in case robot spawned in (n,0), robot can't not move, so Y always != 0
-		if (initPos.getY() != 0 && map_r[initPos.getX()][initPos.getY()-1] == 0)
-		{
-			covered.push_back(initPos);
-			map_r[initPos.getX()][initPos.getY()] = 0;  //Clear old position 
+		if (initPos.getY() != 0) {
+			if (map_r[initPos.getX()][initPos.getY() - 1] == 0 || map_r[initPos.getX()][initPos.getY() - 1] == 2) {
+				covered.push_back(initPos);
+				map_r[initPos.getX()][initPos.getY()] = 0;  //Clear old position 
 
-			initPos.setX(initPos.getX());
-			initPos.setY(initPos.getY() - 1);
+				initPos.setX(initPos.getX());
+				initPos.setY(initPos.getY() - 1);
+			}
 		}
 
 		map_r[initPos.getX()][initPos.getY()] = 4;

@@ -54,6 +54,12 @@
     <ClCompile Include="smartRobot.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="verySmartRobot.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="scoreTree.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="maze.h">
@@ -90,6 +96,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="smartRobot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="verySmartRobot.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="scoreTree.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

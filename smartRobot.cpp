@@ -68,7 +68,7 @@ void smartRobot::go() {
 			Point2D potential_direction(initPos.getX() + dx[i], initPos.getY() + dy[i]);
 
 			potential.push_back(potential_direction);
-		} //check ok
+		}
 
 		std::vector<int> score_list; //list of score
 
@@ -95,9 +95,9 @@ void smartRobot::go() {
 				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 1) {
 					continue;
 				} //robot cannot step in wall
-				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 
-					map_r[initPos.getX()][initPos.getY()]){
-					score.push_back(0);
+				if (i.getX() + dx[j] == initPos.getX() && 
+					i.getY() + dy[j] == initPos.getY()){
+					continue;
 				}//robot can't go back to start position
 
 				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 0) {
@@ -107,8 +107,11 @@ void smartRobot::go() {
 					score.push_back(0);
 				}//if not free cell, add 0
 				if (map_r[i.getX() + dx[j]][i.getY() + dy[j]] == 2) {
-					score.push_back(1);
-				}//exit point, add 1
+					score.push_back(2);
+				}//exit point, add 2
+				if (map_r[i.getX()][i.getY()] == 2) {
+					score.push_back(2);
+				}//exit point, add 2 (potential direction)
 			}
 
 			for (int n : score) {
@@ -118,23 +121,29 @@ void smartRobot::go() {
 			score_list.push_back(sum_score); //put it to list score
 		}
 
-		int rp; //random direction in case there are more than 1 max score
+		for (int n : score_list) {
+			std::cout << n << " "; //sum
+		}
+
+		int rp; //random direction index
 		int max_score = *max_element(score_list.begin(), score_list.end()); //find max score
-		std::vector<int> max_index; //index of a direction with max score
+		int count_max = std::count(score_list.begin(), score_list.end(), max_score); //count max in case there are more than 1 number max
+		std::vector<int>max_index; //index of max number
+		int mi_rand; //max index random
 
 		for (int i = 0; i < score_list.size(); i++) {
 			if (score_list[i] == max_score) {
 				max_index.push_back(i);
 			}
 		}
-
-		for (int i : max_index) {
-			std::cout << i << " ";
+		
+		if (count_max == 1) { //if max = 1 robot will only that index;
+			rp = max_index[0];
 		}
-
-
-		int count_max = std::count(score_list.begin(), score_list.end(), max_score);//count max in case there are more than 1 number max
-		rp = rand() % count_max;
+		else if (count_max > 1) { //if max more than 1 robot will random it
+			mi_rand = rand() % count_max;
+			rp = max_index[mi_rand];
+		}
 
 		int newX = potential[rp].getX();
 		int newY = potential[rp].getY();
