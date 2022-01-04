@@ -143,6 +143,4 @@ int main() {
 			getchar();
 		}
 	}
-
-
 }
