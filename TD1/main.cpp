@@ -85,9 +85,6 @@ int main() {
 			robotDisplay(RM->getRblist()[i]->getInitPos().getX(),
 				RM->getRblist()[i]->getInitPos().getY(),
 				RM->getRblist()[i]->public_map_r[robots[i]->getInitPos().getX()][RM->getRblist()[i]->getInitPos().getY()]);
-
-			///* Set cursor */
-			//gotoxy(0, RM->getRblist()[i]->public_map_r.size() + 2);
 		}
 
 		if (GetAsyncKeyState(VK_ESCAPE)) {
@@ -131,9 +128,6 @@ int main() {
 			robotDisplay(cm->getRblist()[i]->getInitPos().getX(),
 				cm->getRblist()[i]->getInitPos().getY(),
 				cm->getRblist()[i]->public_map_r[robots[i]->getInitPos().getX()][cm->getRblist()[i]->getInitPos().getY()]);
-
-			///* Set cursor */
-			//gotoxy(0, cm->getRblist()[i]->public_map_r.size() + 2);
 		}
 
 		if (GetAsyncKeyState(VK_ESCAPE)) {
