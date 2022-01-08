@@ -2,7 +2,7 @@
 #define ROBOT_
 
 #include "point2D.hpp"
-#include "randomMaze.h"
+#include "maze.h"
 
 #include <iostream>
 #include <vector>

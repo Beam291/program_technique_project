@@ -91,14 +91,12 @@ void complexMaze::generateWall() {
 
     //generate exit
     srand(time(NULL));
-    for (int i = 0; i < row; ++i)
-    {
-        for (int j = 0; j < col; ++j)
-        {
+    for (int i = 0; i < row; ++i){
+        for (int j = 0; j < col; ++j) {
             int x = rand() % (row - 1);
             int y = rand() % (col - 1);
-            if (map[x][y] != 1)
-            {
+
+            if (map[x][y] != 1){
                 map[x][y] = 2;
                 break;
             }

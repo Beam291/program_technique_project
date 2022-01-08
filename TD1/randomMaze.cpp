@@ -133,7 +133,7 @@ void randomMaze::generateWall() {
 			int y = rand() % (col - 1);
 			if (map[x][y] != true) {
 				map[x][y] = 2;
-				std::cout << "Exit at x = " << x << ", y = " << y << std::endl << std::endl;
+				//std::cout << "Exit at x = " << x << ", y = " << y << std::endl << std::endl;
 				break;
 			}
 		}
