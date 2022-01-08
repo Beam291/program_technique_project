@@ -9,7 +9,7 @@ int main() {
 	std::vector<robot*> robots;
 	std::vector<bool> check_list;
 
-	std::cout << "EXERCISE 7: TEST MAZE." << std::endl;
+	std::cout << "EXERCISE 7: TEST MAZE" << std::endl;
 
 	maze<int> M (15, 20, robots);
 	M.mazeStructure();
