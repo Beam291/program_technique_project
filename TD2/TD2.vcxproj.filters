@@ -21,6 +21,9 @@
     <ClInclude Include="genericPoint2D.hpp">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="genericRandomMaze.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">

@@ -19,6 +19,7 @@ public:
 	maze() {
 
 	}
+
 	maze(X row, X col, std::vector<robot*> rblist) {
 		this->row = row;
 		this->col = col;
@@ -56,6 +57,7 @@ public:
 		std::vector<std::vector<X>> map(row, std::vector<X>(col, 0));
 		this->map = map;
 	} //create maze
+
 	virtual void generateWall() {
 
 	} //generate wall

@@ -95,7 +95,6 @@ void complexMaze::generateWall() {
         for (int j = 0; j < col; ++j) {
             int x = rand() % (row - 1);
             int y = rand() % (col - 1);
-
             if (map[x][y] != 1){
                 map[x][y] = 2;
                 break;
