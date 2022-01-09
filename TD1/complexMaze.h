@@ -11,7 +11,6 @@ class robot;
 class complexMaze : public maze {
 private:
 	int row, col;
-	int wallLength, wallNumber;
 
 public:
 	//contructor
@@ -23,8 +22,9 @@ public:
 	void visit(int x, int y);
 	
 	void mazeStructure() override;
-	void generateWall() override;
 	void display() override;
+
+	void generateWall() override;
 
 	friend class robot;
 };

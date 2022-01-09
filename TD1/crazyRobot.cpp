@@ -39,6 +39,7 @@ void crazyRobot::setCovered(Point2D newPos) {
 void crazyRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
 		//std::cout << "crazyRobot have been escaped" << std::endl;
+		//robot will disspear
 	}
 	else {
 		//the robot can only go up, down, left, right

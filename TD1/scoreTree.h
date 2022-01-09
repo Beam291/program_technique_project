@@ -15,7 +15,6 @@ protected:
 	std::vector<int> dy = { 0, 1, 0, -1 };
 	std::vector<std::vector<int>> score_map;
 	
-
 public:
 	//contructor
 	scoreTree();

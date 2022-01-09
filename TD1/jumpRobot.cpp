@@ -40,6 +40,7 @@ void jumpRobot::setCovered(Point2D newPos) {
 void jumpRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
 		//std::cout << "jumpRobot have been escaped" << std::endl;
+		//robot will disspear
 	}
 	else {
 		//the robot can only go up, down, left, right

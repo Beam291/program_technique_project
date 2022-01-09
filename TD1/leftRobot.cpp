@@ -39,6 +39,7 @@ void leftRobot::setCovered(Point2D newPos) {
 void leftRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
 		//std::cout << "leftRobot have been escaped" << std::endl;
+		//robot will disspear
 	}
 	else {
 		//in case robot spawned in (n,0), robot can't not move, so Y always != 0

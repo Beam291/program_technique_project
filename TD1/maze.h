@@ -35,6 +35,7 @@ public:
 	virtual void display(); //display
 
 	friend class robot;
+	friend class scoreTree;
 };
 
 #endif

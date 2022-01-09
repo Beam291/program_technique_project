@@ -39,6 +39,7 @@ void rightRobot::setCovered(Point2D newPos) {
 void rightRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
 		//std::cout << "rightRobot have been escaped" << std::endl;
+		//robot will disspear
 	}
 	else {
 		//in case robot spawned in (n,max Y), robot can't not move, so Y always != max Y

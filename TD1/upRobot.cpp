@@ -39,6 +39,7 @@ void upRobot::setCovered(Point2D newPos) {
 void upRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
 		//std::cout << "upRobot have been escaped" << std::endl;
+		//robot will disspear
 	}
 	else {
 		//in case robot spawned in (0, n), robot can't not move, so X always != 0

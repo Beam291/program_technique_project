@@ -40,6 +40,7 @@ void verySmartRobot::setCovered(Point2D newPos) {
 void verySmartRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
 		//std::cout << "verySmartRobot have been escaped" << std::endl;
+		//robot will disspear
 	}
 	else {
 		setRobotInitPos(Point2D(initPos.getX(), initPos.getY()));

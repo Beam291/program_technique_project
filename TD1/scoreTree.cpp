@@ -146,67 +146,77 @@ void scoreTree::potentialSensor() {
 			potential_lv2.push_back(potential_direction);
 		}
 
-		std::vector<int> score_list_lv2;
-
-		for (auto k : potential_lv2) {
-			int sum_score = 0; //sum score of a potential direction
-			std::vector<int> score; //score of a neighbor
-
-			for (int n = 0; n < 4; n++) {
-				if (n == 0 && k.getX() == (score_map.size() - 1)) {
-					score.push_back(0);
-					continue;
-				} //robot cannot move down
-				if (n == 1 && k.getY() == (score_map[0].size() - 1)) {
-					score.push_back(0);
-					continue;
-				} //robot cannot move right
-				if (n == 2 && k.getX() == 0) {
-					score.push_back(0);
-					continue;
-				} //robot cannot move left
-				if (n == 3 && k.getY() == 0) {
-					score.push_back(0);
-					continue;
-				} //robot cannot move up
-				if (score_map[k.getX() + dx[n]][k.getY() + dy[n]] == 1) {
-					score.push_back(0);
-					continue;
-				} //robot cannot step in wall
-				if (k.getX() + dx[n] == i.getX() &&
-					k.getY() + dy[n] == i.getY()) {
-					score.push_back(0);
-					continue;
-				}//robot can't go back to start position
-
-				if (score_map[k.getX() + dx[n]][k.getY() + dy[n]] == 0) {
-					score.push_back(1);
-				}//free cell, add 1
-				if (score_map[k.getX() + dx[n]][k.getY() + dy[n]] != 0) {
-					score.push_back(0);
-				}//if not free cell, add 0
-				if (score_map[k.getX() + dx[n]][k.getY() + dy[n]] == 2) {
-					score.push_back(2);
-				}//exit point, add 2
-				if (score_map[k.getX()][k.getY()] == 2) {
-					score.push_back(2);
-				}//exit point, add 2 (potential direction)
-			}
-
-			for (int n : score) {
-				sum_score += n; //sum
-			}
-
-			score_list_lv2.push_back(sum_score); //put it to list score
+		if (potential_lv2.empty()) {
+			potentialSensor_lv2_score.push_back(0);
 		}
+		else {
+			std::vector<int> score_list_lv2;
 
-		//int rand_max; //random max number
-		int max_score = *max_element(score_list_lv2.begin(), score_list_lv2.end()); //find max score
+			for (auto k : potential_lv2) {
+				int sum_score = 0; //sum score of a potential direction
+				std::vector<int> score; //score of a neighbor
 
-		potentialSensor_lv2_score.push_back(max_score);
+				for (int n = 0; n < 4; n++) {
+					if (n == 0 && k.getX() == (score_map.size() - 1)) {
+						score.push_back(0);
+						continue;
+					} //robot cannot move down
+					if (n == 1 && k.getY() == (score_map[0].size() - 1)) {
+						score.push_back(0);
+						continue;
+					} //robot cannot move right
+					if (n == 2 && k.getX() == 0) {
+						score.push_back(0);
+						continue;
+					} //robot cannot move left
+					if (n == 3 && k.getY() == 0) {
+						score.push_back(0);
+						continue;
+					} //robot cannot move up
+					if (score_map[k.getX() + dx[n]][k.getY() + dy[n]] == 1) {
+						score.push_back(0);
+						continue;
+					} //robot cannot step in wall
+					if (k.getX() + dx[n] == i.getX() &&
+						k.getY() + dy[n] == i.getY()) {
+						score.push_back(0);
+						continue;
+					}//robot can't go back to start position
+
+					if (score_map[k.getX() + dx[n]][k.getY() + dy[n]] == 0) {
+						score.push_back(1);
+					}//free cell, add 1
+					if (score_map[k.getX() + dx[n]][k.getY() + dy[n]] != 0) {
+						score.push_back(0);
+					}//if not free cell, add 0
+					if (score_map[k.getX() + dx[n]][k.getY() + dy[n]] == 2) {
+						score.push_back(2);
+					}//exit point, add 2
+					if (score_map[k.getX()][k.getY()] == 2) {
+						score.push_back(2);
+					}//exit point, add 2 (potential direction)
+				}
+
+				for (int n : score) {
+					sum_score += n; //sum
+				}
+
+				score_list_lv2.push_back(sum_score); //put it to list score
+			}
+
+			//int rand_max; //random max number
+			int max_score = *max_element(score_list_lv2.begin(), score_list_lv2.end()); //find max score
+
+			potentialSensor_lv2_score.push_back(max_score);
+		}
 	}
 
+	//sum to find the most highest score in each potential direction
 	std::transform(score_list_lv1.begin(), score_list_lv1.end(), potentialSensor_lv2_score.begin(), score_list_lv1.begin(), std::plus<int>());
+
+	for (auto i : score_list_lv1) {
+		std::cout << i << " ";
+	}
 
 	int rp; //random direction index
 	int max_score_final = *max_element(score_list_lv1.begin(), score_list_lv1.end()); //find max score
@@ -234,4 +244,3 @@ void scoreTree::potentialSensor() {
 
 	setFinalDirection(Point2D(newX, newY));
 }
-

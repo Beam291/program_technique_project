@@ -39,6 +39,7 @@ void downRobot::setCovered(Point2D newPos) {
 void downRobot::go() {
 	if (map_r[initPos.getX()][initPos.getY()] == 2) {
 		//std::cout << "downRobot have been escaped" << std::endl;
+		//robot will disspear
 	}
 	else {
 		//in case robot spawned in (max X, n), robot can't not move, so X always != max X

@@ -2,7 +2,7 @@
 #include <Windows.h>
 #include <iostream>
 
-//fixed position 
+//fixed position
 void gotoxy(int x, int y)
 {
     static HANDLE h = NULL;
@@ -12,8 +12,8 @@ void gotoxy(int x, int y)
     SetConsoleCursorPosition(h, c);
 }
 
-void robotDisplay(int x, int y, int val)
-{
+//display the robot to the maze
+void robotDisplay(int x, int y, int val) {
     gotoxy(y* 2, x + 4); 
     if (val != 2) { //if not exit, robot will display with the number have been given in each robot class
         std::cout << val;
