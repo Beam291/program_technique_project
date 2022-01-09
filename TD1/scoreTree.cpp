@@ -214,10 +214,6 @@ void scoreTree::potentialSensor() {
 	//sum to find the most highest score in each potential direction
 	std::transform(score_list_lv1.begin(), score_list_lv1.end(), potentialSensor_lv2_score.begin(), score_list_lv1.begin(), std::plus<int>());
 
-	for (auto i : score_list_lv1) {
-		std::cout << i << " ";
-	}
-
 	int rp; //random direction index
 	int max_score_final = *max_element(score_list_lv1.begin(), score_list_lv1.end()); //find max score
 	int count_max_final = std::count(score_list_lv1.begin(), score_list_lv1.end(), max_score_final); //count max in case there are more than 1 number max
