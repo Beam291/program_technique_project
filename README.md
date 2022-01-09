@@ -1,1 +1,1 @@
-# program_technique_project
+# program_technique_project by Le Nguyen Khoi - M21.005.ICT
